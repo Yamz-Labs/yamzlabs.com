@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yamz Labs: 300B-parameter models on one 128 GB mini PC</title>
+<meta name="description" content="Yamz Labs quantizes large open models to run on one AMD Ryzen AI Max+ 395 mini PC with 128 GB. First release: GLM-5.3-Flash and MiMo-V2.6-Flash, with the Kyojin engine.">
+<meta name="theme-color" content="#101014">
+<link rel="canonical" href="https://yamzlabs.com/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" type="image/png" sizes="180x180">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yamz Labs">
+<meta property="og:title" content="Two 300B-parameter models. One 128 GB mini PC.">
+<meta property="og:description" content="GLM-5.3-Flash and MiMo-V2.6-Flash, quantized for AMD Strix Halo, with the open Kyojin engine.">
+<meta property="og:url" content="https://yamzlabs.com/">
+<meta property="og:image" content="https://yamzlabs.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Two 300B-parameter models. One 128 GB mini PC.">
+<meta name="twitter:description" content="GLM-5.3-Flash and MiMo-V2.6-Flash, quantized for AMD Strix Halo, with the open Kyojin engine.">
+<meta name="twitter:image" content="https://yamzlabs.com/og.png">
+<link rel="preload" href="ubuntu-sans.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Ubuntu Sans";src:url(ubuntu-sans.woff2) format("woff2");font-weight:400 700;font-display:swap}
+:root{--ink:#101014;--paper:#F4F2EC;--ube:#5B3DF5;--lube:#9C8CFF;--mute:#a6a5ae;--line:#2a2a36;--card:#17171e}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 17px/1.6 "Ubuntu Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--lube);text-underline-offset:3px}
+a:hover{color:var(--paper)}
+.w{max-width:960px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;gap:10px;padding:20px 0;font-weight:700}
+header img{width:32px;height:32px;border-radius:8px}
+h1{font-size:clamp(2.1rem,7.4vw,4rem);line-height:1.08;margin:.6em 0 .5em;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--lube)}
+h2{font-size:1.5rem;margin:0 0 .6em;letter-spacing:-.01em}
+p{margin:0 0 1em}
+.lead{font-size:1.15rem;color:#dcdad3;max-width:40em}
+section{padding:44px 0;border-top:1px solid var(--line)}
+.hero{padding:16px 0 48px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;padding:12px 20px;border-radius:10px;background:var(--ube);color:#fff;text-decoration:none;font-weight:700}
+.btn:hover{background:#6d52f7;color:#fff}
+.btn.alt{background:transparent;border:1px solid var(--line);color:var(--paper)}
+.btn.alt:hover{border-color:var(--lube)}
+.cards{display:grid;gap:16px;grid-template-columns:1fr}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card h3{margin:0;font-size:1.25rem}
+.sub{color:var(--mute);font-size:.95rem;margin:2px 0 16px}
+.fig{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 16px}
+.fig b{display:block;white-space:nowrap;font-size:1.6rem;line-height:1.15;color:var(--paper)}
+.fig small{font-size:.5em;font-weight:400;color:var(--lube)}
+.fig span{display:block;font-size:.8rem;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+.card p{font-size:.95rem;color:#cfcdc6;margin:0 0 14px}
+.card a.l{font-weight:700}
+.charts{display:grid;gap:16px;margin-top:24px}
+.charts img,.heroimg{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line)}
+.note{color:var(--mute);font-size:.85rem}
+.links{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:12px 28px}
+footer{padding:28px 0 48px;border-top:1px solid var(--line);color:var(--mute);font-size:.85rem}
+[hidden]{display:none}
+@media(min-width:720px){body{font-size:18px}.cards{grid-template-columns:1fr 1fr}.charts{grid-template-columns:1fr 1fr}.fig b{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<div class="w">
+<header><img src="logo.svg" alt="" width="32" height="32"><span>Yamz Labs</span></header>
+<main>
+<section class="hero" style="border:0">
+<h1>Two <em>300B-parameter</em> models. One 128 GB mini PC.</h1>
+<p class="lead">Yamz Labs quantizes large open models and builds the engine to run them on a single AMD Ryzen AI Max+ 395 machine with 128 GB of memory. No server, no cloud: the weights, the engine and the benchmarks are public.</p>
+<div class="cta">
+<a class="btn" href="https://huggingface.co/yamz-labs">Models on Hugging Face</a>
+<a class="btn alt" href="https://github.com/Yamz-Labs/kyojin">Kyojin on GitHub</a>
+</div>
+</section>
+
+<section id="models">
+<h2>First two models</h2>
+<div class="cards">
+<div class="card">
+<h3>GLM-5.3-Flash</h3>
+<div class="sub">320B parameters, 18B active. EXL3 quantization.</div>
+<div class="fig">
+<div><b>99.7 <small>GB</small></b><span>Size</span></div>
+<div><b>580 <small>tok/s</small></b><span>Prefill</span></div>
+<div><b>26 to 30 <small>tok/s</small></b><span>Decode</span></div>
+</div>
+<p>Top-1 agreement with the official FP8 model: 89.31 % on 30 held-out rows, 90.11 % on 126. Prefill measured at 3.5K, 14K and 64K tokens.</p>
+<a class="l" href="https://huggingface.co/yamz-labs/GLM-5.3-Flash-EXL3-Yamz">Model card</a>
+</div>
+<div class="card">
+<h3>MiMo-V2.6-Flash-MOPD</h3>
+<div class="sub">309B parameters, 15B active. EXL3 quantization.</div>
+<div class="fig">
+<div><b>105 <small>GB</small></b><span>Size</span></div>
+<div><b>~650 <small>tok/s</small></b><span>Prefill</span></div>
+<div><b>up to 44 <small>tok/s</small></b><span>Decode</span></div>
+</div>
+<p>Top-1 agreement with the official FP8 model: 91.99 %. Decode uses speculative decoding: 32.1 on prose, 34.8 on chat, 44.3 on code.</p>
+<a class="l" href="https://huggingface.co/yamz-labs/MiMo-V2.6-Flash-MOPD-EXL3-Yamz">Model card</a>
+</div>
+</div>
+<div class="charts">
+<img src="chart-speed.webp" width="1200" height="675" loading="lazy" alt="Prefill and decode speed of GLM-5.3-Flash and MiMo-V2.6-Flash on one Strix Halo machine">
+<img src="chart-quality.webp" width="1200" height="675" loading="lazy" alt="KLD and top-1 agreement against the official FP8 model">
+</div>
+<p class="note" style="margin-top:16px">All figures: AMD Ryzen AI Max+ 395, 128 GB, one machine. Quality is measured against the official FP8 weights. Uncensored variants of both models are also published. Methods and limits are on each model card.</p>
+</section>
+
+<section id="kyojin">
+<h2>Kyojin engine</h2>
+<p>Kyojin runs these models on AMD Strix Halo (gfx1151) with ROCm. It is built on <a href="https://github.com/turboderp-org/exllamav3">ExLlamaV3</a> by turboderp, whose EXL3 format and quantization work make this possible. Our thanks to turboderp and the ExLlamaV3 contributors. Kyojin adds the kernels, memory handling and speculative decoding that these models need on unified-memory hardware.</p>
+<p><a href="https://github.com/Yamz-Labs/kyojin">github.com/Yamz-Labs/kyojin</a></p>
+</section>
+
+<section id="next">
+<h2>First release</h2>
+<p>More models and speed work are coming. Contributions and benchmarks are welcome: run a model on your own machine and tell us your tokens per second and hardware.</p>
+<ul class="links">
+<li><a href="https://github.com/Yamz-Labs/kyojin">GitHub</a></li>
+<li><a href="https://huggingface.co/yamz-labs">Hugging Face</a></li>
+<li><a href="mailto:hello@yamzlabs.com">hello@yamzlabs.com</a></li>
+<li id="x" hidden><a id="xa" href="#">X</a></li>
+</ul>
+</section>
+</main>
+<footer>&copy; Yamz Labs. Not affiliated with Z.ai or Xiaomi. Set in Ubuntu Sans.</footer>
+</div>
+<script>var X_URL="";if(X_URL){document.getElementById("xa").href=X_URL;document.getElementById("x").hidden=false}</script>
+</body>
+</html>
