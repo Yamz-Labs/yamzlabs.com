@@ -1,141 +1,112 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Yamz Labs: 300B-parameter models on one 128 GB mini PC</title>
-<meta name="description" content="Yamz Labs quantizes large open models to run on one AMD Ryzen AI Max+ 395 mini PC with 128 GB. First release: GLM-5.3-Flash and MiMo-V2.6-Flash, with the Kyojin engine.">
-<meta name="theme-color" content="#101014">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yamz Labs: Kyojin, fast local inference on AMD Strix Halo</title>
+<meta name="description" content="Kyojin is a fast local inference engine for AMD Strix Halo. Open source. Our own quantised builds of GLM and Qwen.">
 <link rel="canonical" href="https://yamzlabs.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.png" type="image/png" sizes="180x180">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yamz Labs">
-<meta property="og:title" content="Two 300B-parameter models. One 128 GB mini PC.">
-<meta property="og:description" content="GLM-5.3-Flash and MiMo-V2.6-Flash, quantized for AMD Strix Halo, with the open Kyojin engine.">
+<meta property="og:title" content="Fast local inference for AMD Strix Halo.">
+<meta property="og:description" content="Kyojin is a fast local inference engine for AMD Strix Halo. Open source. Our own quantised builds of GLM and Qwen.">
 <meta property="og:url" content="https://yamzlabs.com/">
 <meta property="og:image" content="https://yamzlabs.com/og.png">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="675">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Two 300B-parameter models. One 128 GB mini PC.">
-<meta name="twitter:description" content="GLM-5.3-Flash and MiMo-V2.6-Flash, quantized for AMD Strix Halo, with the open Kyojin engine.">
+<meta name="twitter:title" content="Fast local inference for AMD Strix Halo.">
+<meta name="twitter:description" content="Kyojin is a fast local inference engine for AMD Strix Halo. Open source. Our own quantised builds of GLM and Qwen.">
 <meta name="twitter:image" content="https://yamzlabs.com/og.png">
-<link rel="preload" href="ubuntu-sans.woff2" as="font" type="font/woff2" crossorigin>
+
 <style>
 @font-face{font-family:"Ubuntu Sans";src:url(ubuntu-sans.woff2) format("woff2");font-weight:400 700;font-display:swap}
-:root{--ink:#101014;--paper:#F4F2EC;--ube:#5B3DF5;--lube:#9C8CFF;--mute:#a6a5ae;--line:#2a2a36;--card:#17171e}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--ink);color:var(--paper);font:400 17px/1.6 "Ubuntu Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-a{color:var(--lube);text-underline-offset:3px}
-a:hover{color:var(--paper)}
-.w{max-width:960px;margin:0 auto;padding:0 20px}
-header{display:flex;align-items:center;gap:10px;padding:20px 0;font-weight:700}
-header img{width:32px;height:32px;border-radius:8px}
-h1{font-size:clamp(2.1rem,7.4vw,4rem);line-height:1.08;margin:.6em 0 .5em;letter-spacing:-.02em}
-h1 em{font-style:normal;color:var(--lube)}
-h2{font-size:1.5rem;margin:0 0 .6em;letter-spacing:-.01em}
-p{margin:0 0 1em}
-.lead{font-size:1.15rem;color:#dcdad3;max-width:40em}
-section{padding:44px 0;border-top:1px solid var(--line)}
-.hero{padding:16px 0 48px}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.btn{display:inline-block;padding:12px 20px;border-radius:10px;background:var(--ube);color:#fff;text-decoration:none;font-weight:700}
-.btn:hover{background:#6d52f7;color:#fff}
-.btn.alt{background:transparent;border:1px solid var(--line);color:var(--paper)}
-.btn.alt:hover{border-color:var(--lube)}
-.cards{display:grid;gap:16px;grid-template-columns:1fr}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
-.card h3{margin:0;font-size:1.25rem}
-.sub{color:var(--mute);font-size:.95rem;margin:2px 0 16px}
-.fig{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 16px}
-.fig b{display:block;white-space:nowrap;font-size:1.6rem;line-height:1.15;color:var(--paper)}
-.fig small{font-size:.5em;font-weight:400;color:var(--lube)}
-.fig span{display:block;font-size:.8rem;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
-.card p{font-size:.95rem;color:#cfcdc6;margin:0 0 14px}
-.card a.l{font-weight:700}
-.charts{display:grid;gap:16px;margin-top:24px}
-.charts img,.heroimg{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line)}
-.note{color:var(--mute);font-size:.85rem}
-.links{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:12px 28px}
-footer{padding:28px 0 48px;border-top:1px solid var(--line);color:var(--mute);font-size:.85rem}
-[hidden]{display:none}
-@media(min-width:720px){body{font-size:18px}.cards{grid-template-columns:1fr 1fr}.charts{grid-template-columns:1fr 1fr}.fig b{font-size:1.8rem}}
-</style>
-</head>
-<body>
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}img{max-width:100%;height:auto;display:block}
+a{text-underline-offset:3px}table{border-collapse:collapse;width:100%}
+.gal{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}
+.gal a{text-decoration:none;color:inherit;display:block}
+.gal .m{display:block}.gal .d{display:block}
+@media(min-width:900px){.gal{grid-template-columns:repeat(3,1fr)}}
+
+:root{--fg:#000;--acc:#1F5FA8;--mute:#555}
+body{margin:0;background:#fff;color:#000;font:400 17px/1.5 "Ubuntu Sans",system-ui,sans-serif}
+.w{max-width:1200px;margin:0 auto;padding:0 24px}
+a{color:var(--acc)}a:hover{color:#000}
+.mono,th,.k{font-family:ui-monospace,Menlo,Consolas,monospace}
+header>span{white-space:nowrap;margin-right:16px}header{display:flex;justify-content:space-between;border-bottom:4px solid #000;padding:16px 0 12px;font-weight:700}
+header nav{display:flex;gap:18px;flex-wrap:wrap;font-weight:400;font-size:.9rem}header nav a{color:#000;text-decoration:none}header nav a:hover{color:var(--acc)}
+.sheet{display:grid;grid-template-columns:1fr;border-left:1px solid #000}
+.cell{border-right:1px solid #000;border-bottom:1px solid #000;padding:20px}
+.k{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);display:block;margin-bottom:6px}
+h1{font-size:clamp(2.1rem,5.4vw,4rem);line-height:1.04;margin:0;font-weight:700;letter-spacing:-.02em;max-width:16em}
+h2{font-size:.75rem;font-family:ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:.1em;margin:40px 0 0;padding:8px 0;border-top:4px solid #000;border-bottom:1px solid #000}
+.lead{font-size:1.15rem;max-width:36em;margin:18px 0 0}
+.fig{display:grid;grid-template-columns:repeat(2,1fr)}
+@media(min-width:900px){.fig{grid-template-columns:repeat(4,1fr)}}
+.fig .cell b{display:block;font-size:clamp(2.6rem,6vw,4.6rem);line-height:1;letter-spacing:-.03em;font-weight:700}
+.fig .cell.a b{color:var(--acc)}.fig .cell small{font-size:.9rem;color:var(--mute);display:block;margin-top:8px}
+.two{display:grid;grid-template-columns:1fr}@media(min-width:800px){.two{grid-template-columns:1fr 1fr}}
+table{font-size:.9rem;margin-top:0}th,td{padding:9px 12px;text-align:right;border-bottom:1px solid #000}th:first-child,td:first-child{text-align:left;padding-left:0}th{font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}td.n{font-family:ui-monospace,Menlo,Consolas,monospace}
+.btns{display:flex;gap:0;margin-top:26px;flex-wrap:wrap}.btn{padding:11px 20px;border:2px solid #000;text-decoration:none;font-weight:700;color:#000;margin:0 -2px 0 0}.btn.p{background:var(--acc);border-color:var(--acc);color:#fff}.btn:hover{background:#000;color:#fff;border-color:#000}
+.note{font-size:.85rem;color:var(--mute)}
+.gal{grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))!important;gap:0;border-left:1px solid #000;border-top:1px solid #000;margin-top:0}
+.gal a{border-right:1px solid #000;border-bottom:1px solid #000;padding:12px}
+.gal .m{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc);margin-top:8px}
+.gal .d{font-size:.9rem}.gal a:hover{background:#f2f5f9}
+pre{background:#f4f4f4;border-left:4px solid var(--acc);padding:14px 16px;overflow:auto;font-size:.85rem;margin:0 0 12px}
+footer{margin-top:44px;padding:16px 0 40px;border-top:4px solid #000;font-size:.85rem;color:var(--mute)}
+figure{margin:0}
+
+tr.old td{color:#666}tr.old small{font-size:.8em}
+</style></head><body>
 <div class="w">
-<header><img src="logo.svg" alt="" width="32" height="32"><span>Yamz Labs</span></header>
+<header><span>Yamz Labs</span><nav><a href="#results">Results</a><a href="#gallery">Gallery</a><a href="#models">Models</a><a href="#install">Install</a><a href="#services">Services</a><a href="#contact">Contact</a></nav></header>
 <main>
-<section class="hero" style="border:0">
-<h1>Two <em>300B-parameter</em> models. One 128 GB mini PC.</h1>
-<p class="lead">Yamz Labs quantizes large open models and builds the engine to run them on a single AMD Ryzen AI Max+ 395 machine with 128 GB of memory. No server, no cloud: the weights, the engine and the benchmarks are public.</p>
-<div class="cta">
-<a class="btn" href="https://huggingface.co/yamz-labs">Models on Hugging Face</a>
-<a class="btn alt" href="https://github.com/Yamz-Labs/kyojin">Kyojin on GitHub</a>
-</div>
-</section>
+<div class="cell" style="border:0;padding:44px 0 0"><span class="k">Kyojin / inference engine / AMD Strix Halo (gfx1151)</span>
+<h1>Fast local inference for AMD Strix Halo.</h1>
+<p class="lead">Kyojin is open source. We publish our own quantised builds of GLM and Qwen for it. Models of 100 GB run on one 128 GB mini PC.</p>
+<div class="btns"><a class="btn p" href="https://github.com/Yamz-Labs/kyojin">Kyojin on GitHub</a><a class="btn" href="https://huggingface.co/yamz-labs">Models on Hugging Face</a></div></div>
 
-<section id="models">
-<h2>First two models</h2>
-<div class="cards">
-<div class="card">
-<h3>GLM-5.3-Flash</h3>
-<div class="sub">320B parameters, 18B active. EXL3, built from turboderp's public quantization with our layer mix and tuning.</div>
-<div class="fig">
-<div><b>99.7 <small>GB</small></b><span>Size</span></div>
-<div><b>580 <small>tok/s</small></b><span>Prefill</span></div>
-<div><b>26 to 30 <small>tok/s</small></b><span>Decode</span></div>
+<h2 id="results">Datasheet / measured speed</h2>
+<div class="fig sheet">
+<div class="cell a"><span class="k">Qwen3.8-Flash-Next / prefill at 8K</span><b>1481</b><small>tokens per second</small></div>
+<div class="cell a"><span class="k">Qwen3.8-Flash-Next / decode on code</span><b>66.8</b><small>tokens per second, speculative</small></div>
+<div class="cell"><span class="k">GLM-5.3-Flash / prefill at 8K</span><b>634</b><small>tokens per second</small></div>
+<div class="cell"><span class="k">GLM-5.3-Flash / decode on code</span><b>33.4</b><small>tokens per second, speculative</small></div>
 </div>
-<p>Top-1 agreement with the official FP8 model: 90.11 % on 126 held-out rows. Prefill measured at 3.5K, 14K and 64K tokens.</p>
-<a class="l" href="https://huggingface.co/yamz-labs/GLM-5.3-Flash-EXL3-Yamz">Model card</a>
+<div class="two sheet" style="border-top:0">
+<div class="cell"><span class="k">Fig. 1 / prefill by context length</span><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" role="img" aria-label="Prefill by context length" font-family=""Ubuntu Sans",system-ui,sans-serif" font-size="12"><line x1="52" x2="544" y1="260.0" y2="260.0" stroke="#d0d0d0" stroke-width="1"/><text x="44" y="264.0" text-anchor="end" fill="#555">0</text><line x1="52" x2="544" y1="199.0" y2="199.0" stroke="#d0d0d0" stroke-width="1"/><text x="44" y="203.0" text-anchor="end" fill="#555">375</text><line x1="52" x2="544" y1="138.0" y2="138.0" stroke="#d0d0d0" stroke-width="1"/><text x="44" y="142.0" text-anchor="end" fill="#555">750</text><line x1="52" x2="544" y1="77.0" y2="77.0" stroke="#d0d0d0" stroke-width="1"/><text x="44" y="81.0" text-anchor="end" fill="#555">1125</text><line x1="52" x2="544" y1="16.0" y2="16.0" stroke="#d0d0d0" stroke-width="1"/><text x="44" y="20.0" text-anchor="end" fill="#555">1500</text><text x="52.0" y="282" text-anchor="middle" fill="#555">8K</text><text x="175.0" y="282" text-anchor="middle" fill="#555">32K</text><text x="298.0" y="282" text-anchor="middle" fill="#555">64K</text><text x="421.0" y="282" text-anchor="middle" fill="#555">128K</text><text x="544.0" y="282" text-anchor="middle" fill="#555">256K</text><text x="298.0" y="298" text-anchor="middle" fill="#555">context length (tokens)</text><polyline points="52.0,19.1 175.0,19.7 298.0,26.4 421.0,32.9 544.0,40.9" fill="none" stroke="#1F5FA8" stroke-width="2.5"/><rect x="49.0" y="16.1" width="6" height="6" fill="#1F5FA8"/><rect x="172.0" y="16.7" width="6" height="6" fill="#1F5FA8"/><rect x="295.0" y="23.4" width="6" height="6" fill="#1F5FA8"/><rect x="418.0" y="29.9" width="6" height="6" fill="#1F5FA8"/><rect x="541.0" y="37.9" width="6" height="6" fill="#1F5FA8"/><text x="52.0" y="41.1" text-anchor="start" fill="#1F5FA8" font-weight="700">Qwen3.8-Flash-Next: 1481 to 1347</text><polyline points="52.0,156.9 175.0,156.4 298.0,160.3 421.0,164.2 544.0,167.8" fill="none" stroke="#000" stroke-width="2.5" stroke-dasharray="6 4"/><rect x="49.0" y="153.9" width="6" height="6" fill="#000"/><rect x="172.0" y="153.4" width="6" height="6" fill="#000"/><rect x="295.0" y="157.3" width="6" height="6" fill="#000"/><rect x="418.0" y="161.2" width="6" height="6" fill="#000"/><rect x="541.0" y="164.8" width="6" height="6" fill="#000"/><text x="52.0" y="144.9" text-anchor="start" fill="#000" font-weight="700">GLM-5.3-Flash: 634 to 567</text></svg></figure></div>
+<div class="cell"><span class="k">Fig. 2 / speculative decode by context length</span><figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" role="img" aria-label="Speculative decode by context length" font-family=""Ubuntu Sans",system-ui,sans-serif" font-size="12"><line x1="52" x2="544" y1="260.0" y2="260.0" stroke="#d0d0d0" stroke-width="1"/><text x="44" y="264.0" text-anchor="end" fill="#555">0</text><line x1="52" x2="544" y1="199.0" y2="199.0" stroke="#d0d0d0" stroke-width="1"/><text x="44" y="203.0" text-anchor="end" fill="#555">15</text><line x1="52" x2="544" y1="138.0" y2="138.0" stroke="#d0d0d0" stroke-width="1"/><text x="44" y="142.0" text-anchor="end" fill="#555">30</text><line x1="52" x2="544" y1="77.0" y2="77.0" stroke="#d0d0d0" stroke-width="1"/><text x="44" y="81.0" text-anchor="end" fill="#555">45</text><line x1="52" x2="544" y1="16.0" y2="16.0" stroke="#d0d0d0" stroke-width="1"/><text x="44" y="20.0" text-anchor="end" fill="#555">60</text><text x="52.0" y="282" text-anchor="middle" fill="#555">8K</text><text x="175.0" y="282" text-anchor="middle" fill="#555">32K</text><text x="298.0" y="282" text-anchor="middle" fill="#555">64K</text><text x="421.0" y="282" text-anchor="middle" fill="#555">128K</text><text x="544.0" y="282" text-anchor="middle" fill="#555">256K</text><text x="298.0" y="298" text-anchor="middle" fill="#555">context length (tokens)</text><polyline points="52.0,70.9 175.0,71.3 298.0,71.3 421.0,76.6 544.0,79.8" fill="none" stroke="#1F5FA8" stroke-width="2.5"/><rect x="49.0" y="67.9" width="6" height="6" fill="#1F5FA8"/><rect x="172.0" y="68.3" width="6" height="6" fill="#1F5FA8"/><rect x="295.0" y="68.3" width="6" height="6" fill="#1F5FA8"/><rect x="418.0" y="73.6" width="6" height="6" fill="#1F5FA8"/><rect x="541.0" y="76.8" width="6" height="6" fill="#1F5FA8"/><text x="52.0" y="92.9" text-anchor="start" fill="#1F5FA8" font-weight="700">Qwen3.8-Flash-Next: 46.5 to 44.3</text><polyline points="52.0,133.5 175.0,135.2 298.0,138.0 421.0,129.5 544.0,128.6" fill="none" stroke="#000" stroke-width="2.5" stroke-dasharray="6 4"/><rect x="49.0" y="130.5" width="6" height="6" fill="#000"/><rect x="172.0" y="132.2" width="6" height="6" fill="#000"/><rect x="295.0" y="135.0" width="6" height="6" fill="#000"/><rect x="418.0" y="126.5" width="6" height="6" fill="#000"/><rect x="541.0" y="125.6" width="6" height="6" fill="#000"/><text x="52.0" y="121.5" text-anchor="start" fill="#000" font-weight="700">GLM-5.3-Flash: 31.1 to 32.3</text></svg></figure></div>
 </div>
-<div class="card">
-<h3>MiMo-V2.6-Flash-MOPD</h3>
-<div class="sub">309B parameters, 15B active. EXL3 quantization.</div>
-<div class="fig">
-<div><b>105 <small>GB</small></b><span>Size</span></div>
-<div><b>~650 <small>tok/s</small></b><span>Prefill</span></div>
-<div><b>up to 44 <small>tok/s</small></b><span>Decode</span></div>
-</div>
-<p>Top-1 agreement with the official FP8 model: 91.99 %. Decode uses speculative decoding: 32.1 on prose, 34.8 on chat, 44.3 on code.</p>
-<a class="l" href="https://huggingface.co/yamz-labs/MiMo-V2.6-Flash-MOPD-EXL3-Yamz">Model card</a>
-</div>
-</div>
-<div class="charts">
-<img src="chart-speed.webp" width="1200" height="675" loading="lazy" alt="Prefill and decode speed of GLM-5.3-Flash and MiMo-V2.6-Flash on one Strix Halo machine">
-<img src="chart-quality.webp" width="1200" height="675" loading="lazy" alt="KLD and top-1 agreement against the official FP8 model">
-</div>
-<p class="note" style="margin-top:16px">All figures: AMD Ryzen AI Max+ 395, 128 GB, one machine. Quality is measured against the official FP8 weights. Uncensored variants of both models are also published. Methods and limits are on each model card.</p>
-</section>
+<p class="note" style="margin-top:12px">One Ryzen AI Max+ 395, 128 GB. Decode ranges: Qwen 45.7 to 66.8, GLM 26.2 to 33.4 (prose, chat, code). Top-1 agreement with the official FP8 weights: Qwen 93.81 % (200 neutral texts, 3084 positions), GLM 90.11 % (126 held-out rows). Method: <a href="https://github.com/Yamz-Labs/kyojin/blob/main/doc/benchmarks.md">doc/benchmarks.md</a>.</p>
 
-<section id="kyojin">
-<h2>Kyojin engine</h2>
-<p>Kyojin runs these models on AMD Strix Halo (gfx1151) with ROCm. It is built on <a href="https://github.com/turboderp-org/exllamav3">ExLlamaV3</a> by turboderp, whose EXL3 format and quantization work make this possible. Our thanks to turboderp and the ExLlamaV3 contributors. Kyojin adds the kernels, memory handling and speculative decoding that these models need on unified-memory hardware.</p>
-<p><a href="https://github.com/Yamz-Labs/kyojin">github.com/Yamz-Labs/kyojin</a></p>
-</section>
+<h2 id="gallery">Made with our models</h2>
+<p class="note" style="margin:10px 0 14px">One prompt each. Written by the model on Kyojin, published as it came out.</p>
+<!-- GALLERY CELLS: one <a class="c"> per cell. Add or remove lines here; the grid adapts. -->
+<div class="gal">
+<a class="c" href="https://yamz-labs.github.io/gallery/#pagoda"><img src="img/glm-pagoda.webp" width="600" height="420" loading="lazy" alt="Voxel pagoda in a cherry-blossom garden, single HTML file, made by GLM-5.3-Flash"><span class="m">GLM-5.3-Flash</span><span class="d">Voxel pagoda in a cherry-blossom garden, single HTML file</span></a>
+<a class="c" href="https://yamz-labs.github.io/gallery/#pagoda"><img src="img/qwen-pagoda.webp" width="600" height="420" loading="lazy" alt="Voxel pagoda in a cherry-blossom garden, made by Qwen3.8-Flash-Next"><span class="m">Qwen3.8-Flash-Next</span><span class="d">Voxel pagoda in a cherry-blossom garden, single HTML file</span></a>
+<a class="c" href="https://yamz-labs.github.io/gallery/#pagoda"><img src="img/mimo-pagoda.webp" width="600" height="420" loading="lazy" alt="Voxel pagoda in a cherry-blossom garden, made by MiMo-V2.6-Flash"><span class="m">MiMo-V2.6-Flash</span><span class="d">Voxel pagoda in a cherry-blossom garden, single HTML file</span></a>
+</div>
 
-<section id="services">
-<h2>For companies</h2>
-<p>The same work, applied to a business: a private model installed on your own machines, automation of repetitive office tasks, and websites. Your data stays inside the company. Services are delivered in France by GETA Solutions Informatique, with entry prices shown.</p>
-<p><a href="https://getasolutions.fr/informatique/">getasolutions.fr/informatique</a> (in French)</p>
-</section>
+<h2 id="models">Models</h2>
+<table><tr><th>Model</th><th>Pack</th><th>Prefill 8K</th><th>Prefill 256K</th><th>Decode</th><th>Top-1</th><th>Weights</th></tr>
+<tr><td>Qwen3.8-Flash-Next</td><td class="n">95 GB</td><td class="n">1481</td><td class="n">1347</td><td class="n">45.7 to 66.8</td><td class="n">93.81 %</td><td><a href="https://huggingface.co/yamz-labs/Qwen3.8-Flash-Next-EXL3-Yamz">Hugging Face</a></td></tr>
+<tr><td>GLM-5.3-Flash</td><td class="n">99.73 GB</td><td class="n">634</td><td class="n">567</td><td class="n">26.2 to 33.4</td><td class="n">90.11 %</td><td><a href="https://huggingface.co/yamz-labs/GLM-5.3-Flash-EXL3-Yamz">Hugging Face</a></td></tr>
+<tr class="old"><td>MiMo-V2.6-Flash <small>(version 1.5)</small></td><td class="n">105.8 GB</td><td class="n">760</td><td class="n">-</td><td class="n">28.9 to 37.0</td><td class="n">91.99 %</td><td><a href="https://huggingface.co/yamz-labs/MiMo-V2.6-Flash-MOPD-EXL3-Yamz">Hugging Face</a></td></tr></table>
 
-<section id="next">
-<h2>First release</h2>
-<p>More models and speed work are coming. Contributions and benchmarks are welcome: run a model on your own machine and tell us your tokens per second and hardware.</p>
-<ul class="links">
-<li><a href="https://github.com/Yamz-Labs/kyojin">GitHub</a></li>
-<li><a href="https://huggingface.co/yamz-labs">Hugging Face</a></li>
-<li><a href="mailto:hello@yamzlabs.com">hello@yamzlabs.com</a></li>
-<li id="x" hidden><a id="xa" href="#">X</a></li>
-</ul>
-</section>
+<h2 id="install">Install</h2>
+<p class="note" style="margin:10px 0">Install ROCm torch and build once (<a href="https://github.com/Yamz-Labs/kyojin/blob/main/doc/install.md">doc/install.md</a>), then:</p>
+<pre>git clone https://github.com/Yamz-Labs/kyojin &amp;&amp; cd kyojin
+hf download yamz-labs/Qwen3.8-Flash-Next-EXL3-Yamz --local-dir ./qwen-pack
+python tools/qwen/serve.py --model ./qwen-pack --port 8000 -c 131072</pre>
+<p class="note">OpenAI API on port 8000. Built on <a href="https://github.com/turboderp-org/exllamav3">ExLlamaV3</a> by turboderp. MIT licence.</p>
+
+<h2 id="services">IT services</h2>
+<p style="max-width:40em">Yamz Labs also works for companies: software development, automation, and AI integration. Your data stays inside your company. <a href="https://getasolutions.fr/informatique/">getasolutions.fr/informatique</a> (in French).</p>
+
+<h2 id="contact">Contact</h2>
+<p><a href="mailto:hello@yamzlabs.com">hello@yamzlabs.com</a></p>
 </main>
-<footer>&copy; Yamz Labs. Not affiliated with Z.ai or Xiaomi. Set in Ubuntu Sans.</footer>
-</div>
-<script>var X_URL="";if(X_URL){document.getElementById("xa").href=X_URL;document.getElementById("x").hidden=false}</script>
-</body>
-</html>
+<footer>&copy; Yamz Labs. Not affiliated with Z.ai, Alibaba or Xiaomi.</footer>
+</div></body></html>
