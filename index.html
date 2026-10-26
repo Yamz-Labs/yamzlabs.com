@@ -109,7 +109,7 @@ svg.chart text { font-family: 'Sans', sans-serif; font-size: 12.5px; fill: var(-
 .big { display: flex; gap: 32px; margin-top: 20px; }
 .big .n { font-family: 'Serif', serif; font-size: 34px; font-weight: 600; color: var(--ink); line-height: 1.1; }
 .big .n small { font-size: 16px; color: var(--muted); font-family: 'Sans', sans-serif; margin-left: 4px; font-weight: 500; }
-.big .l { font-size: 14.5px; color: var(--muted); max-width: 230px; margin-top: 2px; }
+.big .l { font-size: 14.5px; color: var(--muted); max-width: 330px; margin-top: 2px; }
 .links2 { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 18px; font-weight: 600; font-size: 15.5px; }
 .links2 a::after { content: ' →'; }
 
@@ -345,8 +345,7 @@ footer p + p { margin-top: 4px; }
         <h3><span class="en">On NVIDIA too, ahead of llama.cpp.</span><span class="fr">Aussi sur NVIDIA, devant llama.cpp.</span></h3>
         <p><span class="en">Same sources, a CUDA path with hand-written kernels. On one RTX 3090 with Qwen3.8-27B, Kyojin keeps its speed as the context grows; llama.cpp slows down.</span><span class="fr">Les mêmes sources, avec un chemin CUDA et des kernels écrits à la main. Sur une RTX 3090 avec Qwen3.8-27B, Kyojin garde sa vitesse quand le contexte grandit&nbsp;; llama.cpp ralentit.</span></p>
         <div class="big">
-          <div><div class="n">1.7×</div><div class="l"><span class="en">llama.cpp's speed at 128K tokens on this model (37.6 vs 21.6 tok/s)</span><span class="fr">la vitesse de llama.cpp à 128K tokens sur ce modèle (37,6 contre 21,6 tok/s)</span></div></div>
-          <div><div class="n"><span class="en">up to 3×</span><span class="fr">jusqu'à 3×</span></div><div class="l"><span class="en">on other models, in the full tables</span><span class="fr">sur d'autres modèles, dans les tableaux complets</span></div></div>
+          <div><div class="n">1.7×</div><div class="l"><span class="en">llama.cpp's speed at 128K tokens, and still at 250K (37.6 vs 21.6, then 25.3 vs 14.8 tok/s)</span><span class="fr">la vitesse de llama.cpp à 128K tokens, et toujours à 250K (37,6 contre 21,6, puis 25,3 contre 14,8 tok/s)</span></div></div>
         </div>
         <div class="links2"><a href="https://github.com/Yamz-Labs/kyojin#nvidia-rtx-3090"><span class="en">Full tables</span><span class="fr">Tableaux complets</span></a><a href="https://github.com/Yamz-Labs/kyojin/blob/main/tools/cuda/README.md"><span class="en">Build for CUDA</span><span class="fr">Compiler pour CUDA</span></a></div>
       </div>
@@ -416,7 +415,7 @@ footer p + p { margin-top: 4px; }
     <div class="sh">
       <div class="label"><span class="en">Models</span><span class="fr">Modèles</span></div>
       <h2><span class="en">Ready-made packs, free to download.</span><span class="fr">Des packs prêts à l'emploi, en libre accès.</span></h2>
-      <p><span class="en">Each pack is our own compressed build, made to fit in 128 GB with room for long context.</span><span class="fr">Chaque pack est notre propre version compressée, faite pour tenir dans 128&nbsp;Go avec de la place pour un long contexte.</span></p>
+      <p><span class="en">Our own compressed builds. All but the experimental DeepSeek fit in 128 GB with room for long context.</span><span class="fr">Nos propres versions compressées. Toutes, sauf DeepSeek (expérimental), tiennent dans 128&nbsp;Go avec de la place pour un long contexte.</span></p>
     </div>
     <div class="tw">
       <table>
