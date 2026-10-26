@@ -109,7 +109,7 @@ svg.chart text { font-family: 'Sans', sans-serif; font-size: 12.5px; fill: var(-
 .big { display: flex; gap: 32px; margin-top: 20px; }
 .big .n { font-family: 'Serif', serif; font-size: 34px; font-weight: 600; color: var(--ink); line-height: 1.1; }
 .big .n small { font-size: 16px; color: var(--muted); font-family: 'Sans', sans-serif; margin-left: 4px; font-weight: 500; }
-.big .l { font-size: 14.5px; color: var(--muted); max-width: 330px; margin-top: 2px; }
+.big .l { font-size: 14.5px; color: var(--muted); max-width: 260px; margin-top: 2px; }
 .links2 { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 18px; font-weight: 600; font-size: 15.5px; }
 .links2 a::after { content: ' →'; }
 
@@ -239,7 +239,7 @@ footer p + p { margin-top: 4px; }
         <a class="btn primary" href="https://github.com/Yamz-Labs/kyojin"><svg width="17" height="17" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span class="en">Kyojin on GitHub</span><span class="fr">Kyojin sur GitHub</span> <span class="st">★ 210</span></a>
         <a class="btn" href="#services"><span class="en">Work with us</span><span class="fr">Travailler avec nous</span></a>
       </div>
-      <div class="meta"><span class="en">MIT licence · release 1.7.4 · AMD and NVIDIA</span><span class="fr">Licence MIT · version 1.7.4 · AMD et NVIDIA</span></div>
+      <div class="meta"><span class="en">MIT licence · release 1.8.0 · AMD and NVIDIA</span><span class="fr">Licence MIT · version 1.8.0 · AMD et NVIDIA</span></div>
     </div>
     <figure class="shot">
       <a href="https://yamz-labs.github.io/gallery/#pagoda"><img src="img/glm-pagoda.webp" width="600" height="420" alt="Voxel pagoda in a cherry-blossom garden, written by GLM-5.3-Flash running on Kyojin"></a>
@@ -345,7 +345,8 @@ footer p + p { margin-top: 4px; }
         <h3><span class="en">On NVIDIA too, ahead of llama.cpp.</span><span class="fr">Aussi sur NVIDIA, devant llama.cpp.</span></h3>
         <p><span class="en">Same sources, a CUDA path with hand-written kernels. On one RTX 3090 with Qwen3.8-27B, Kyojin keeps its speed as the context grows; llama.cpp slows down.</span><span class="fr">Les mêmes sources, avec un chemin CUDA et des kernels écrits à la main. Sur une RTX 3090 avec Qwen3.8-27B, Kyojin garde sa vitesse quand le contexte grandit&nbsp;; llama.cpp ralentit.</span></p>
         <div class="big">
-          <div><div class="n">1.7×</div><div class="l"><span class="en">llama.cpp's speed at 128K tokens, and still at 250K (37.6 vs 21.6, then 25.3 vs 14.8 tok/s)</span><span class="fr">la vitesse de llama.cpp à 128K tokens, et toujours à 250K (37,6 contre 21,6, puis 25,3 contre 14,8 tok/s)</span></div></div>
+          <div><div class="n">1.7×</div><div class="l"><span class="en">llama.cpp's speed on this model, at 128K and at 250K tokens</span><span class="fr">la vitesse de llama.cpp sur ce modèle, à 128K comme à 250K tokens</span></div></div>
+          <div><div class="n"><span class="en">up to 3×</span><span class="fr">jusqu'à 3×</span></div><div class="l"><span class="en">on other models, in the full tables</span><span class="fr">sur d'autres modèles, dans les tableaux complets</span></div></div>
         </div>
         <div class="links2"><a href="https://github.com/Yamz-Labs/kyojin#nvidia-rtx-3090"><span class="en">Full tables</span><span class="fr">Tableaux complets</span></a><a href="https://github.com/Yamz-Labs/kyojin/blob/main/tools/cuda/README.md"><span class="en">Build for CUDA</span><span class="fr">Compiler pour CUDA</span></a></div>
       </div>
