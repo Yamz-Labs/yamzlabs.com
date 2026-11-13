@@ -257,6 +257,34 @@ footer p + p { margin-top: 4px; }
   </div>
 </div>
 
+<section id="install">
+  <div class="wrap">
+    <div class="sh">
+      <div class="label"><span class="en">For developers</span><span class="fr">Pour les développeurs</span></div>
+      <h2><span class="en">Three commands to a local API.</span><span class="fr">Trois commandes pour une API locale.</span></h2>
+      <p><span class="en">Install torch for your GPU and build once (<a href="https://github.com/Yamz-Labs/kyojin/blob/main/doc/install.md">doc/install.md</a>), then:</span><span class="fr">Installez torch pour votre GPU et compilez une fois (<a href="https://github.com/Yamz-Labs/kyojin/blob/main/doc/install.md">doc/install.md</a>), puis&nbsp;:</span></p>
+    </div>
+    <div class="inst">
+      <div class="code">
+        <button type="button" id="copy"><span class="en">Copy</span><span class="fr">Copier</span></button>
+<pre id="cmds"><span class="p">$ </span>git clone https://github.com/Yamz-Labs/kyojin &amp;&amp; cd kyojin
+<span class="p">$ </span>hf download yamz-labs/Qwen3.8-Flash-Next-EXL3-Yamz --local-dir ./qwen-pack
+<span class="p">$ </span>python tools/qwen/serve.py --model ./qwen-pack --port 8000 -c 131072
+<span class="c"># OpenAI API on http://localhost:8000/v1</span></pre>
+      </div>
+      <div class="card side">
+        <h3><span class="en">Read more</span><span class="fr">Pour aller plus loin</span></h3>
+        <ul>
+          <li><a href="https://github.com/Yamz-Labs/kyojin/blob/main/doc/models.md"><span class="en">Models and serve commands</span><span class="fr">Modèles et commandes</span></a><span class="d">GLM, MiMo, 500K: -c 524288</span></li>
+          <li><a href="https://github.com/Yamz-Labs/kyojin/blob/main/tools/cuda/README.md"><span class="en">NVIDIA build</span><span class="fr">Version NVIDIA</span></a><span class="d"><span class="en">sm_80 and up, RTX 3090 tested</span><span class="fr">sm_80 et plus, testé sur RTX 3090</span></span></li>
+          <li><a href="https://github.com/Yamz-Labs/kyojin/blob/main/doc/benchmarks.md">Benchmarks</a><span class="d"><span class="en">share yours with tools/bench.sh</span><span class="fr">partagez les vôtres avec tools/bench.sh</span></span></li>
+          <li><a href="https://github.com/Yamz-Labs/kyojin/blob/main/CONTRIBUTING.md"><span class="en">Contributing</span><span class="fr">Contribuer</span></a><span class="d"><span class="en"><span data-gh="contributors">12</span> outside contributors so far</span><span class="fr"><span data-gh="contributors">12</span> contributeurs extérieurs à ce jour</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="kyojin">
   <div class="wrap">
     <div class="sh">
@@ -489,34 +517,6 @@ footer p + p { margin-top: 4px; }
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg>
         <h3><span class="en">Automate the work</span><span class="fr">Automatiser le métier</span></h3>
         <p><span class="en">Agents and background jobs, as at GETA: quotes, reminders, invoices, customer support.</span><span class="fr">Agents et tâches automatiques, comme chez GETA&nbsp;: devis, relances, factures, support client.</span></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="install">
-  <div class="wrap">
-    <div class="sh">
-      <div class="label"><span class="en">For developers</span><span class="fr">Pour les développeurs</span></div>
-      <h2><span class="en">Three commands to a local API.</span><span class="fr">Trois commandes pour une API locale.</span></h2>
-      <p><span class="en">Install torch for your GPU and build once (<a href="https://github.com/Yamz-Labs/kyojin/blob/main/doc/install.md">doc/install.md</a>), then:</span><span class="fr">Installez torch pour votre GPU et compilez une fois (<a href="https://github.com/Yamz-Labs/kyojin/blob/main/doc/install.md">doc/install.md</a>), puis&nbsp;:</span></p>
-    </div>
-    <div class="inst">
-      <div class="code">
-        <button type="button" id="copy"><span class="en">Copy</span><span class="fr">Copier</span></button>
-<pre id="cmds"><span class="p">$ </span>git clone https://github.com/Yamz-Labs/kyojin &amp;&amp; cd kyojin
-<span class="p">$ </span>hf download yamz-labs/Qwen3.8-Flash-Next-EXL3-Yamz --local-dir ./qwen-pack
-<span class="p">$ </span>python tools/qwen/serve.py --model ./qwen-pack --port 8000 -c 131072
-<span class="c"># OpenAI API on http://localhost:8000/v1</span></pre>
-      </div>
-      <div class="card side">
-        <h3><span class="en">Read more</span><span class="fr">Pour aller plus loin</span></h3>
-        <ul>
-          <li><a href="https://github.com/Yamz-Labs/kyojin/blob/main/doc/models.md"><span class="en">Models and serve commands</span><span class="fr">Modèles et commandes</span></a><span class="d">GLM, MiMo, 500K: -c 524288</span></li>
-          <li><a href="https://github.com/Yamz-Labs/kyojin/blob/main/tools/cuda/README.md"><span class="en">NVIDIA build</span><span class="fr">Version NVIDIA</span></a><span class="d"><span class="en">sm_80 and up, RTX 3090 tested</span><span class="fr">sm_80 et plus, testé sur RTX 3090</span></span></li>
-          <li><a href="https://github.com/Yamz-Labs/kyojin/blob/main/doc/benchmarks.md">Benchmarks</a><span class="d"><span class="en">share yours with tools/bench.sh</span><span class="fr">partagez les vôtres avec tools/bench.sh</span></span></li>
-          <li><a href="https://github.com/Yamz-Labs/kyojin/blob/main/CONTRIBUTING.md"><span class="en">Contributing</span><span class="fr">Contribuer</span></a><span class="d"><span class="en"><span data-gh="contributors">12</span> outside contributors so far</span><span class="fr"><span data-gh="contributors">12</span> contributeurs extérieurs à ce jour</span></span></li>
-        </ul>
       </div>
     </div>
   </div>
