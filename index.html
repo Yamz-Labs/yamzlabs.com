@@ -436,6 +436,49 @@ footer p + p { margin-top: 4px; }
       </div>
     </div>
   </div>
+    <div class="card split" id="apple">
+      <div>
+        <h3><span class="en">On a Mac too: 3,000 tokens/s to read.</span><span class="fr">Sur un Mac aussi : 3 000 tokens/s en lecture.</span></h3>
+        <p><span class="en">Same engine, an MLX and Metal path in kyojin-mac. On one Mac Studio M3 Ultra, DeepSeek V4.1 Flash reads a 983,000-token prompt at 2,200 tokens/s and still writes at 48. Four sessions at 8K together write 112 tokens/s.</span><span class="fr">Même moteur, une voie MLX et Metal dans kyojin-mac. Sur un seul Mac Studio M3 Ultra, DeepSeek V4.1 Flash lit un prompt de 983 000 tokens à 2 200 tokens/s et écrit encore à 48. Quatre sessions à 8K écrivent ensemble 112 tokens/s.</span></p>
+        <div class="big">
+          <div><div class="n">3,001</div><div class="l"><span class="en">tokens/s reading an 8K prompt</span><span class="fr">tokens/s pour lire un prompt de 8K</span></div></div>
+          <div><div class="n">112</div><div class="l"><span class="en">tokens/s with 4 sessions at once</span><span class="fr">tokens/s avec 4 sessions à la fois</span></div></div>
+        </div>
+        <div class="links2"><a href="https://github.com/Yamz-Labs/kyojin-mac#speed"><span class="en">Full tables</span><span class="fr">Tableaux complets</span></a><a href="https://github.com/Yamz-Labs/kyojin-mac">kyojin-mac</a></div>
+      </div>
+      <div>
+        <div class="chart-t"><span class="en">Writing the answer, on a Mac</span><span class="fr">Écriture de la réponse, sur un Mac</span></div>
+        <div class="chart-s"><span class="en">tokens per second, by context length</span><span class="fr">tokens par seconde, selon la longueur du contexte</span></div>
+        <svg class="chart" viewBox="0 0 560 280" role="img" aria-label="ap">
+<defs>
+<linearGradient id="ap0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f5fa8" stop-opacity=".14"/><stop offset="1" stop-color="#1f5fa8" stop-opacity="0"/></linearGradient>
+</defs><g stroke="#e4e1da" stroke-width="1">
+<line x1="50" y1="250.0" x2="540" y2="250.0"/>
+<line x1="50" y1="192.5" x2="540" y2="192.5"/>
+<line x1="50" y1="135.0" x2="540" y2="135.0"/>
+<line x1="50" y1="77.5" x2="540" y2="77.5"/>
+<line x1="50" y1="20.0" x2="540" y2="20.0"/>
+</g>
+<text x="40" y="254.0" text-anchor="end">0</text>
+<text x="40" y="196.5" text-anchor="end">20</text>
+<text x="40" y="139.0" text-anchor="end">40</text>
+<text x="40" y="81.5" text-anchor="end">60</text>
+<text x="40" y="24.0" text-anchor="end">80</text>
+<text x="70" y="270" text-anchor="middle">8K</text>
+<text x="300" y="270" text-anchor="middle">128K</text>
+<text x="530" y="270" text-anchor="middle">983K</text>
+<path d="M70.0 250 L70.0 71.8 L300.0 86.1 L530.0 110.6 L530.0 250 Z" fill="url(#ap0)"/>
+<polyline points="70,71.8 300,86.1 530,110.6" fill="none" stroke="#1f5fa8" stroke-width="2.5" stroke-linejoin="round"/>
+<g fill="#1f5fa8"><circle cx="70" cy="71.8" r="3.5"/><circle cx="300" cy="86.1" r="3.5"/><circle cx="530" cy="110.6" r="3.5"/></g>
+<text x="88" y="58.8" text-anchor="middle" style="fill:#1f5fa8">62</text>
+<text x="300" y="73.1" text-anchor="middle" style="fill:#1f5fa8">57</text>
+<text x="530" y="97.6" text-anchor="middle" style="fill:#1f5fa8">48.5</text>
+</svg>
+        <div class="legend"><span><i style="background:#1f5fa8"></i>DeepSeek V4.1 Flash</span></div>
+        <p class="foot"><span class="en">Kyojin 1.8.9, Mac Studio M3 Ultra, 256 GB: real server, real text, one warm-up discarded then one measured run. Every figure links to its source.</span><span class="fr">Kyojin 1.8.9, Mac Studio M3 Ultra, 256 Go : vrai serveur, vrai texte, un échauffement écarté puis une mesure. Chaque chiffre renvoie à sa source.</span></p>
+      </div>
+    </div>
+
 </section>
 
 <section id="models">
